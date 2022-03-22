@@ -1,0 +1,9 @@
+{
+	"name": "adf-imersaobigdata-lucas",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "17d8bc4b-a367-4ed1-befe-f317dca282b8",
+		"tenantId": "6b608f53-c5f3-45e4-9ba9-7c62b9cdba8d"
+	}
+}

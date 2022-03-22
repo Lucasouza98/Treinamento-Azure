@@ -1,0 +1,12 @@
+{
+	"name": "ls_key_vault",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "serviço vinculado do key vault.",
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://kv-imersaobigdata.vault.azure.net/"
+		}
+	}
+}

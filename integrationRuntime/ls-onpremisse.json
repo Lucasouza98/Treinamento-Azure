@@ -1,0 +1,7 @@
+{
+	"name": "ls-onpremisse",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "buscando dados da máquina local"
+	}
+}
