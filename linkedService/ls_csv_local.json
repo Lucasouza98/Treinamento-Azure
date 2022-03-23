@@ -4,8 +4,8 @@
 		"annotations": [],
 		"type": "FileServer",
 		"typeProperties": {
-			"host": "C:\\Users\\milena.lira\\Desktop\\MilenaLira\\Milena-PowerBI\\caps02\\dados_pedidos",
-			"userId": "KOIN\\milena.lira",
+			"host": "C:\\Users\\llsilva\\Desktop\\Cursos\\Treinamento_azure\\Aula 01\\02 - files_upload",
+			"userId": "SCCALPHA\\llsilva",
 			"password": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
@@ -16,7 +16,7 @@
 			}
 		},
 		"connectVia": {
-			"referenceName": "ls-onpremisse",
+			"referenceName": "Runtimeselfhosted",
 			"type": "IntegrationRuntimeReference"
 		}
 	}
