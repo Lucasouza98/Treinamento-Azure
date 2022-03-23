@@ -1,0 +1,23 @@
+{
+	"name": "ls_csv_local",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "C:\\Users\\milena.lira\\Desktop\\MilenaLira\\Milena-PowerBI\\caps02\\dados_pedidos",
+			"userId": "KOIN\\milena.lira",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_key_vault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "kvsenhausuariolocal"
+			}
+		},
+		"connectVia": {
+			"referenceName": "ls-onpremisse",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
