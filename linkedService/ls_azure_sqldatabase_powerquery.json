@@ -1,0 +1,13 @@
+{
+	"name": "ls_azure_sqldatabase_powerquery",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "power query não aceita credencial oriunda do azure key vaults, exige a credencial por usuario e senha normal.",
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=sql-imersaobigdata-turma03.database.windows.net;initial catalog=sqldb-imersaobigdata-turma03;user id=adminlucas",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDY5NTRFNTY4LTVEQjYtNEI3MS05N0FDLTA1OUIzQkVGNjIxQV85ZDFjNDVhNC1mYWRmLTRmODMtYThlNS0zZDU5MGUwNDFiYjkiDQp9"
+		}
+	}
+}
