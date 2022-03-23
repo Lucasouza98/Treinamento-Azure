@@ -1,0 +1,32 @@
+{
+	"name": "ds_fixo_pla_cor",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_csv_local",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Treinamento-aula01"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Plan1",
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "plan_cor.xlsx"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "cor",
+				"type": "String"
+			}
+		]
+	}
+}
