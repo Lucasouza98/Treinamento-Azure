@@ -1,5 +1,5 @@
 {
-	"name": "ds_generico_delimited_text",
+	"name": "ds_generico_delimited_text_2",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_datalake_gen2",
@@ -9,13 +9,7 @@
 			"container_name": {
 				"type": "string"
 			},
-			"directory_name": {
-				"type": "string"
-			},
 			"file_name": {
-				"type": "string"
-			},
-			"separator_name": {
 				"type": "string"
 			}
 		},
@@ -40,10 +34,7 @@
 					"type": "Expression"
 				}
 			},
-			"columnDelimiter": {
-				"value": "@dataset().separator_name",
-				"type": "Expression"
-			},
+			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
