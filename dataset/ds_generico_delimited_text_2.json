@@ -11,6 +11,9 @@
 			},
 			"file_name": {
 				"type": "string"
+			},
+			"separator_name": {
+				"type": "string"
 			}
 		},
 		"folder": {
