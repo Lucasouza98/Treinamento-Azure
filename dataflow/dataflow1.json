@@ -28,7 +28,7 @@
 						"referenceName": "ds_generico_azuresql",
 						"type": "DatasetReference"
 					},
-					"name": "saidasqllocal"
+					"name": "saidaazure"
 				},
 				{
 					"dataset": {
@@ -111,7 +111,7 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> saidasqllocal",
+				"     errorHandlingOption: 'stopOnFirstError') ~> saidaazure",
 				"condicao@saidaparquet sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'parquet',",
