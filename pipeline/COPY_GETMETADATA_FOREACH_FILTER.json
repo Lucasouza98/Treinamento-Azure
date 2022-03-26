@@ -51,7 +51,17 @@
 						]
 					}
 				],
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata Folder').output.childItems",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@contains(item().name,'.txt')",
+						"type": "Expression"
+					}
+				}
 			},
 			{
 				"name": "ForEach1",
