@@ -38,6 +38,48 @@
 					},
 					"firstRowOnly": false
 				}
+			},
+			{
+				"name": "Filter load table 1",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Lookup Controller",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup Controller').output.value",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@contains(item().load_table,'1')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "ForEach",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Filter load table 1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Filter load table 1').output.value",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"folder": {
