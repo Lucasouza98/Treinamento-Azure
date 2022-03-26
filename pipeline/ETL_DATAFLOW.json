@@ -1,0 +1,57 @@
+{
+	"name": "ETL_DATAFLOW",
+	"properties": {
+		"activities": [
+			{
+				"name": "EXEC FLOW",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "DATAFLOW_ARTISTA",
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"artista": {
+								"container_name": "bronze",
+								"file_name": "ARTISTA.csv",
+								"separator_name": ";"
+							},
+							"eventoartista": {
+								"container_name": "bronze",
+								"file_name": "EVENTO_ARTISTA.csv",
+								"separator_name": ";"
+							},
+							"saidaazure": {
+								"schema_name": "SalesLT",
+								"table_name": "tb_faturamento_positivo"
+							},
+							"saidaparquet": {
+								"container_name": "trusted"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "None",
+					"cacheSinks": {
+						"firstRowOnly": true
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "PIPELINES_ACTIVITIES_23022"
+		},
+		"annotations": []
+	}
+}

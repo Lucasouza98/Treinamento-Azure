@@ -1,0 +1,7 @@
+{
+	"name": "Runtimeselfhosted",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "runtime para conexão local"
+	}
+}

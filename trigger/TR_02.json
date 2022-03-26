@@ -1,0 +1,26 @@
+{
+	"name": "TR_02",
+	"properties": {
+		"description": "TUMBLING_WINDOW é uma janela de tempo exemplo, executa desde o dia 18 até hoje",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipeline": {
+			"pipelineReference": {
+				"referenceName": "TR_TUMBLING_WINDOW",
+				"type": "PipelineReference"
+			}
+		},
+		"type": "TumblingWindowTrigger",
+		"typeProperties": {
+			"frequency": "Hour",
+			"interval": 15,
+			"startTime": "2022-03-18T00:00:00Z",
+			"delay": "00:00:00",
+			"maxConcurrency": 50,
+			"retryPolicy": {
+				"intervalInSeconds": 30
+			},
+			"dependsOn": []
+		}
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"name": "TR-03",
+	"properties": {
+		"description": "essa trigger analisa o datalake, dispara quando ocorrer algo no data lake, exemplo uma carga no data lake, exemplo: arquivo .csv carregar ou ser deletado a trigger dispara",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "TR_STORAGE_EVENTS",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/fileslucas/blobs/",
+			"blobPathEndsWith": ".csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/e1b4fc30-5958-4f94-b314-8d5664a0d531/resourceGroups/rg-imersaobigdata-turma03/providers/Microsoft.Storage/storageAccounts/dlsimersaobigdata",
+			"events": [
+				"Microsoft.Storage.BlobCreated",
+				"Microsoft.Storage.BlobDeleted"
+			]
+		}
+	}
+}

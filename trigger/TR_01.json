@@ -1,0 +1,25 @@
+{
+	"name": "TR_01",
+	"properties": {
+		"description": "TRIGGER DE SCHEDULE - CALENDÁRIO",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "TR_SCHEDULE",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-03-26T18:15:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
