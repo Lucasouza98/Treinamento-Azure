@@ -29,6 +29,12 @@
 				},
 				{
 					"name": "renomearcolunasea"
+				},
+				{
+					"name": "colunacalculadaea"
+				},
+				{
+					"name": "joinartistaeventoartista"
 				}
 			],
 			"scriptLines": [
@@ -66,7 +72,11 @@
 				"          EA_FKCOD_EVENTO = FKCOD_EVENTO",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> renomearcolunasea"
+				"     skipDuplicateMapOutputs: true) ~> renomearcolunasea",
+				"renomearcolunasea derive(codigo_x_valor_pgto = EA_CODIGO*EA_VALOR_PGTO) ~> colunacalculadaea",
+				"renomearcolunasartista, colunacalculadaea join(COD_ARTISTA == EA_FKCOD_ARTISTA,",
+				"     joinType:'left',",
+				"     broadcast: 'auto')~> joinartistaeventoartista"
 			]
 		}
 	}
