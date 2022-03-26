@@ -26,7 +26,7 @@
 						}
 					},
 					"fieldList": [
-						"columnCount"
+						"exists"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
@@ -71,7 +71,7 @@
 						}
 					},
 					"fieldList": [
-						"childItems"
+						"itemType"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
@@ -111,7 +111,7 @@
 						}
 					},
 					"fieldList": [
-						"columnCount"
+						"structure"
 					]
 				}
 			},
@@ -138,7 +138,7 @@
 						}
 					},
 					"fieldList": [
-						"contentMD5"
+						"itemName"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
