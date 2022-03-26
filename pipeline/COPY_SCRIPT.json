@@ -86,7 +86,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "Select \n* \nSalesLT.TB_ADF_SCRIPT_ACTIVITY"
+							"text": "Select \n* \nFrom SalesLT.TB_ADF_SCRIPT_ACTIVITY"
 						}
 					]
 				}
