@@ -25,7 +25,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "ds_generico_sqllocal",
+						"referenceName": "ds_generico_azuresql",
 						"type": "DatasetReference"
 					},
 					"name": "saidasqllocal"
@@ -110,11 +110,12 @@
 				"     upsertable:false,",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> saidasqllocal",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> saidasqllocal",
 				"condicao@saidaparquet sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'parquet',",
-				"     partitionFileNames:['tb_faturamento_negativo'],",
+				"     partitionFileNames:['tb_faturamento_negativo.parquet'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
