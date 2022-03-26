@@ -49,7 +49,11 @@
 				"outputs": [
 					{
 						"referenceName": "ds_json_api_saida",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"container_name": "trusted",
+							"file_name": "criticas_filmes.json"
+						}
 					}
 				]
 			}
