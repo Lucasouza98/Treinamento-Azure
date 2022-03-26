@@ -106,14 +106,12 @@
 									}
 								},
 								"sink": {
-									"type": "DelimitedTextSink",
+									"type": "ParquetSink",
 									"storeSettings": {
 										"type": "AzureBlobFSWriteSettings"
 									},
 									"formatSettings": {
-										"type": "DelimitedTextWriteSettings",
-										"quoteAllText": true,
-										"fileExtension": ".txt"
+										"type": "ParquetWriteSettings"
 									}
 								},
 								"enableStaging": false,
@@ -142,11 +140,10 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "ds_generico_delimited_text",
+									"referenceName": "ds_generico_parquet",
 									"type": "DatasetReference",
 									"parameters": {
-										"container_name": "container1",
-										"directory_name": "trusted",
+										"container_name": "trusted",
 										"file_name": {
 											"value": "@replace(item().name,'.txt','.parquet')",
 											"type": "Expression"
