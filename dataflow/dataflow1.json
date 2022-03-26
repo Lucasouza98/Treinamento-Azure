@@ -22,7 +22,22 @@
 					"name": "eventoartista"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_generico_sqllocal",
+						"type": "DatasetReference"
+					},
+					"name": "saidasqllocal"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_generico_parquet_dataflow",
+						"type": "DatasetReference"
+					},
+					"name": "saidaparquet"
+				}
+			],
 			"transformations": [
 				{
 					"name": "renomearcolunasartista"
@@ -38,6 +53,9 @@
 				},
 				{
 					"name": "agrupamento"
+				},
+				{
+					"name": "condicao"
 				}
 			],
 			"scriptLines": [
@@ -81,7 +99,26 @@
 				"     joinType:'left',",
 				"     broadcast: 'auto')~> joinartistaeventoartista",
 				"joinartistaeventoartista aggregate(groupBy(NOME),",
-				"     EA_VALOR_PGTO = sum(EA_VALOR_PGTO)) ~> agrupamento"
+				"     faturamento_total = sum(EA_VALOR_PGTO)) ~> agrupamento",
+				"agrupamento split(faturamento_total > 100000,",
+				"     disjoint: false) ~> condicao@(saidasqllocal, saidaparquet)",
+				"condicao@saidasqllocal sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> saidasqllocal",
+				"condicao@saidaparquet sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> saidaparquet"
 			]
 		}
 	}
