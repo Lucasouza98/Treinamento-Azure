@@ -57,7 +57,29 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "ds_generico_delimited_text_2",
+						"type": "DatasetReference",
+						"parameters": {
+							"container_name": "fileslucas",
+							"file_name": "cidades.csv",
+							"separator_name": ";"
+						}
+					}
+				}
 			},
 			{
 				"name": "Lookup Table Singleton",
@@ -77,7 +99,22 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ds_generico_azuresql",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema_name": "SalesLT",
+							"table_name": "Plan_cor"
+						}
+					}
+				}
 			},
 			{
 				"name": "Lookup CSV Array",
@@ -97,7 +134,30 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "ds_generico_delimited_text_2",
+						"type": "DatasetReference",
+						"parameters": {
+							"container_name": "fileslucas",
+							"file_name": "cidades.csv",
+							"separator_name": ";"
+						}
+					},
+					"firstRowOnly": false
+				}
 			},
 			{
 				"name": "Lookup Table Array",
