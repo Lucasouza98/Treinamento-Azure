@@ -49,6 +49,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "PIPELINES_ACTIVITIES_23022"
+		},
 		"annotations": []
 	}
 }
