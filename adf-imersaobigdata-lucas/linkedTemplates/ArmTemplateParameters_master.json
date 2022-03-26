@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-imersaobigdata-lucas"
+		},
+		"ls_azure_sqldatabase_powerquery_connectionString": {
+			"value": ""
+		},
+		"ls_azure_sqldatabase_properties_typeProperties_connectionString_secretName": {
+			"value": "kvstringconnsqldatabase"
+		},
+		"ls_csv_local_properties_typeProperties_host": {
+			"value": "C:\\Users\\llsilva\\Desktop\\Cursos\\Treinamento_azure\\Aula 01\\02 - files_upload"
+		},
+		"ls_csv_local_properties_typeProperties_userId": {
+			"value": "SCCALPHA\\llsilva"
+		},
+		"ls_datalake_gen2_properties_typeProperties_url": {
+			"value": "https://dlsimersaobigdata.dfs.core.windows.net"
+		},
+		"ls_http_api_properties_typeProperties_url": {
+			"value": "https://api.nytimes.com/svc/movies/v2/"
+		},
+		"ls_key_vault_properties_typeProperties_baseUrl": {
+			"value": "https://kv-imersaobigdata.vault.azure.net/"
+		},
+		"ls_sqllocal_properties_typeProperties_connectionString_secretName": {
+			"value": "kvstringconnsqllocal"
+		},
+		"TR-03_properties_typeProperties_scope": {
+			"value": "/subscriptions/e1b4fc30-5958-4f94-b314-8d5664a0d531/resourceGroups/rg-imersaobigdata-turma03/providers/Microsoft.Storage/storageAccounts/dlsimersaobigdata"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
