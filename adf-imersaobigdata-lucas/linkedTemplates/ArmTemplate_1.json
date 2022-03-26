@@ -13,42 +13,6 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_generico_azuresql')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "ls_azure_sqldatabase",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"schema_name": {
-						"type": "string"
-					},
-					"table_name": {
-						"type": "string"
-					}
-				},
-				"folder": {
-					"name": "Treinamento-aula01"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": {
-						"value": "@dataset().schema_name",
-						"type": "Expression"
-					},
-					"table": {
-						"value": "@dataset().table_name",
-						"type": "Expression"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/ds_generico_delimited_text')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -448,9 +412,7 @@
 				},
 				"annotations": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_generico_azuresql')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/COPY_COPY_DATA_2')]",
@@ -676,7 +638,6 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_generico_azuresql')]",
 				"[concat(variables('factoryId'), '/datasets/ds_generico_delimited_text_2')]",
 				"[concat(variables('factoryId'), '/datasets/ds_generico_sqllocal')]"
 			]
@@ -856,7 +817,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_generico_delimited_text')]",
-				"[concat(variables('factoryId'), '/datasets/ds_generico_azuresql')]",
 				"[concat(variables('factoryId'), '/datasets/ds_generico_delimited_text_2')]"
 			]
 		},
@@ -1284,8 +1244,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_generico_delimited_text')]",
-				"[concat(variables('factoryId'), '/datasets/ds_generico_delimited_text_2')]",
-				"[concat(variables('factoryId'), '/datasets/ds_generico_azuresql')]"
+				"[concat(variables('factoryId'), '/datasets/ds_generico_delimited_text_2')]"
 			]
 		},
 		{
@@ -1595,7 +1554,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_generico_delimited_text_2')]",
-				"[concat(variables('factoryId'), '/datasets/ds_generico_azuresql')]",
 				"[concat(variables('factoryId'), '/datasets/ds_generico_parquet_dataflow')]"
 			]
 		},
@@ -1721,6 +1679,46 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/COPY_GETMETADATA')]",
 				"[concat(variables('factoryId'), '/pipelines/COPY_LOOKUP')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TR_01')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "TRIGGER DE SCHEDULE - CALENDÁRIO",
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "TR_SCHEDULE",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					},
+					{
+						"pipelineReference": {
+							"referenceName": "COPY_COPY_DATA",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2022-03-26T18:32:00Z",
+						"endTime": "2022-03-27T01:00:55Z",
+						"timeZone": "UTC",
+						"schedule": {}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/COPY_COPY_DATA')]"
 			]
 		}
 	]

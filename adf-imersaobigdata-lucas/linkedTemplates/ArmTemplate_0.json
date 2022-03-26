@@ -330,7 +330,7 @@
 			"properties": {
 				"description": "essa trigger analisa o datalake, dispara quando ocorrer algo no data lake, exemplo uma carga no data lake, exemplo: arquivo .csv carregar ou ser deletado a trigger dispara",
 				"annotations": [],
-				"runtimeState": "Stopped",
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -354,37 +354,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/TR_STORAGE_EVENTS')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/TR_01')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "TRIGGER DE SCHEDULE - CALENDÁRIO",
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "TR_SCHEDULE",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Day",
-						"interval": 1,
-						"startTime": "2022-03-26T18:15:00Z",
-						"timeZone": "UTC"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/TR_SCHEDULE')]"
 			]
 		},
 		{
@@ -792,6 +761,44 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/ls_csv_local')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_generico_azuresql')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_azure_sqldatabase",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"schema_name": {
+						"type": "string"
+					},
+					"table_name": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "Treinamento-aula01"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": {
+						"value": "@dataset().schema_name",
+						"type": "Expression"
+					},
+					"table": {
+						"value": "@dataset().table_name",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_azure_sqldatabase')]"
 			]
 		}
 	]
