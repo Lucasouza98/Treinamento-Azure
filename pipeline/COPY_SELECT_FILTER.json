@@ -43,6 +43,10 @@
 					"items": {
 						"value": "@activity('SELECT_TABLE').output.resultSets[0]['rows']",
 						"type": "Expression"
+					},
+					"condition": {
+						"value": "@equals(item().customerID,10)",
+						"type": "Expression"
 					}
 				}
 			}
