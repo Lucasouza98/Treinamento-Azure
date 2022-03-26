@@ -13,7 +13,31 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "ds_generico_delimited_text",
+						"type": "DatasetReference",
+						"parameters": {
+							"container_name": "fileslucas",
+							"directory_name": "controller",
+							"file_name": "controller_tables.csv",
+							"separator_name": ";"
+						}
+					},
+					"firstRowOnly": false
+				}
 			},
 			{
 				"name": "Lookup CSV Singleton",
@@ -56,7 +80,7 @@
 				"userProperties": []
 			},
 			{
-				"name": "Lookup4",
+				"name": "Lookup CSV Array",
 				"type": "Lookup",
 				"dependsOn": [
 					{
@@ -76,11 +100,11 @@
 				"userProperties": []
 			},
 			{
-				"name": "Lookup5",
+				"name": "Lookup Table Array",
 				"type": "Lookup",
 				"dependsOn": [
 					{
-						"activity": "Lookup4",
+						"activity": "Lookup CSV Array",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -96,11 +120,11 @@
 				"userProperties": []
 			},
 			{
-				"name": "Lookup6",
+				"name": "Lookup Table Array Query",
 				"type": "Lookup",
 				"dependsOn": [
 					{
-						"activity": "Lookup5",
+						"activity": "Lookup Table Array",
 						"dependencyConditions": [
 							"Succeeded"
 						]
