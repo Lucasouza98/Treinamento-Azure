@@ -10,12 +10,6 @@
 					"referenceName": "TR_SCHEDULE",
 					"type": "PipelineReference"
 				}
-			},
-			{
-				"pipelineReference": {
-					"referenceName": "COPY_COPY_DATA",
-					"type": "PipelineReference"
-				}
 			}
 		],
 		"type": "ScheduleTrigger",
