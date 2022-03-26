@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
+				"name": "EXEC FLOW",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -15,11 +15,37 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"dataflow": {
+						"referenceName": "DATAFLOW_ARTISTA",
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"artista": {
+								"container_name": "bronze",
+								"file_name": "ARTISTA.csv",
+								"separator_name": ";"
+							},
+							"eventoartista": {
+								"container_name": "bronze",
+								"file_name": "EVENTO_ARTISTA.csv",
+								"separator_name": ";"
+							},
+							"saidaazure": {
+								"schema_name": "SalesLT",
+								"table_name": "tb_faturamento_positivo"
+							},
+							"saidaparquet": {
+								"container_name": "trusted"
+							}
+						}
+					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
 					},
-					"traceLevel": "Fine"
+					"traceLevel": "None",
+					"cacheSinks": {
+						"firstRowOnly": true
+					}
 				}
 			}
 		],
