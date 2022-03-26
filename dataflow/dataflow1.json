@@ -6,11 +6,67 @@
 		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
-			"sources": [],
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_generico_delimited_text_2",
+						"type": "DatasetReference"
+					},
+					"name": "artista"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_generico_delimited_text_2",
+						"type": "DatasetReference"
+					},
+					"name": "eventoartista"
+				}
+			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "renomearcolunasartista"
+				},
+				{
+					"name": "renomearcolunasea"
+				}
+			],
 			"scriptLines": [
-				""
+				"source(output(",
+				"          COD_ARTISTA as short,",
+				"          CPF as long,",
+				"          NOME as string,",
+				"          COD_ESTILO as short",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> artista",
+				"source(output(",
+				"          CODIGO as short,",
+				"          VALOR_PGTO as double,",
+				"          DT_PGTO as string,",
+				"          FKCOD_ARTISTA as short,",
+				"          FKCOD_EVENTO as short",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> eventoartista",
+				"artista select(mapColumn(",
+				"          COD_ARTISTA,",
+				"          NOME,",
+				"          COD_ESTILO",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> renomearcolunasartista",
+				"eventoartista select(mapColumn(",
+				"          EA_CODIGO = CODIGO,",
+				"          EA_VALOR_PGTO = VALOR_PGTO,",
+				"          EA_DT_PGTO = DT_PGTO,",
+				"          EA_FKCOD_ARTISTA = FKCOD_ARTISTA,",
+				"          EA_FKCOD_EVENTO = FKCOD_EVENTO",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> renomearcolunasea"
 			]
 		}
 	}
