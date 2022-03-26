@@ -25,6 +25,15 @@
 							"type": "JsonReadSettings"
 						}
 					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
 					"enableStaging": false
 				},
 				"inputs": [
@@ -35,6 +44,12 @@
 							"token_api": "0O4zCEIRihWcSplcii4Zi04pnMdhMSZy",
 							"relative_url": "critics/all.json?"
 						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_json_api_saida",
+						"type": "DatasetReference"
 					}
 				]
 			}
